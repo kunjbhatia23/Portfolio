@@ -217,10 +217,8 @@
         <div class="g4"></div>
     </div>
 
-    <!-- Header -->
     <header id="main-header" class="floating-nav fixed left-1/2 -translate-x-1/2 z-50 rounded-full">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold text-white tracking-wider">Kunj Bhatia</a>
             <nav class="hidden md:flex space-x-6">
                 <a href="#about" class="text-gray-300 hover:text-sky-400 transition duration-300 px-3 py-1">About</a>
                 <a href="#skills" class="text-gray-300 hover:text-sky-400 transition duration-300 px-3 py-1">Skills</a>
@@ -234,11 +232,10 @@
             </button>
         </div>
     </header>
-     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-slate-900/90 backdrop-blur-sm z-40">
+     <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-slate-900/90 backdrop-blur-sm z-40">
         <div class="flex justify-end p-6">
              <button id="close-mobile-menu" class="text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
         </div>
         <div class="flex flex-col items-center justify-center h-full -mt-16 text-2xl space-y-6">
@@ -254,7 +251,6 @@
 
     <main class="relative z-10 container mx-auto px-6 pt-12">
 
-        <!-- Hero Section -->
         <section id="home" class="min-h-screen flex items-center justify-center text-center relative">
             <div class="max-w-4xl">
                 <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4 animate-fade-in-down">
@@ -267,7 +263,7 @@
                     Passionate MCA student with hands-on experience in building responsive web and mobile applications. I thrive on creating intuitive user experiences and solving complex problems with clean, efficient code.
                 </p>
                 <div class="flex justify-center flex-wrap gap-4">
-                    <a href="#contact" class="hero-btn bg-sky-500 text-white font-bold py-3 px-6 rounded-lg inline-flex items-center">
+                    <a href="mailto:kunj.bhatia.dev@email.com" id="hero-contact-btn" class="hero-btn bg-sky-500 text-white font-bold py-3 px-6 rounded-lg inline-flex items-center">
                         Contact Me
                     </a>
                     <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" class="hero-btn hero-btn-secondary text-white font-bold py-3 px-6 rounded-lg inline-flex items-center">
@@ -283,7 +279,6 @@
             </a>
         </section>
 
-        <!-- About Me -->
         <section id="about" class="py-24 scroll-animation">
             <div class="text-center"><h2 class="section-title">About Me</h2></div>
             <div class="grid md:grid-cols-5 gap-12 items-center">
@@ -305,7 +300,6 @@
             </div>
         </section>
 
-        <!-- Skills -->
         <section id="skills" class="py-24 scroll-animation">
             <div class="text-center"><h2 class="section-title">My Tech Arsenal</h2></div>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -324,11 +318,9 @@
             </div>
         </section>
 
-        <!-- Projects -->
         <section id="projects" class="py-24 scroll-animation">
             <div class="text-center"><h2 class="section-title">My Creations</h2></div>
             <div class="space-y-28">
-                <!-- Project 1 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div class="project-showcase rounded-lg p-4">
                         <div class="project-image-container">
@@ -347,7 +339,6 @@
                         <button style="--stagger: 4;" class="learn-more-btn hero-btn hero-btn-secondary text-white font-bold py-2 px-5 rounded-lg" data-project="budget-guru">Learn More</button>
                     </div>
                 </div>
-                <!-- Project 2 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div class="md:order-2 project-showcase rounded-lg p-4">
                         <div class="project-image-container">
@@ -365,8 +356,7 @@
                          <button style="--stagger: 4;" class="learn-more-btn hero-btn hero-btn-secondary text-white font-bold py-2 px-5 rounded-lg" data-project="alumnify">Learn More</button>
                     </div>
                 </div>
-                 <!-- Project 3 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <div class="project-showcase rounded-lg p-4">
                         <div class="project-image-container">
                            <img src="https://placehold.co/800x600/0f172a/0ea5e9?text=GameTalk" alt="GameTalk" class="w-full h-auto object-cover rounded-md">
@@ -387,7 +377,6 @@
             </div>
         </section>
 
-        <!-- Experience -->
         <section id="experience" class="py-24 scroll-animation">
             <div class="text-center"><h2 class="section-title">My Journey</h2></div>
             <div class="relative max-w-2xl mx-auto">
@@ -408,7 +397,6 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section id="gallery" class="py-24 scroll-animation">
             <div class="text-center"><h2 class="section-title">Gallery</h2></div>
             <div class="gallery-collage">
@@ -435,41 +423,64 @@
                 </div>
             </div>
         </section>
-
-        <!-- Contact -->
+        
         <section id="contact" class="py-24 text-center scroll-animation">
-            <div class="text-center"><h2 class="section-title">Get In Touch</h2></div>
-            <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
-                I'm currently looking for new opportunities and would love to hear from you. Whether you have a question or just want to say hi, feel free to reach out.
+            <div class="text-center"><h2 class="section-title">Connect With Me</h2></div>
+            <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-12">
+                I'm always open to connecting with like-minded people. Feel free to reach out on any of these platforms!
             </p>
-            <form id="contact-form" class="max-w-xl mx-auto text-left">
-                <div class="mb-4">
-                    <label for="name" class="block mb-2 text-sm font-medium text-slate-300">Name</label>
-                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block mb-2 text-sm font-medium text-slate-300">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
-                </div>
-                <div class="mb-6">
-                    <label for="message" class="block mb-2 text-sm font-medium text-slate-300">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="hero-btn bg-sky-500 text-white font-bold py-3 px-8 rounded-lg inline-flex items-center text-lg">Send Message</button>
-                </div>
-            </form>
+            <div class="flex justify-center items-center flex-wrap gap-x-6 md:gap-x-8 gap-y-4">
+                <a href="mailto:kunj.bhatia.dev@email.com" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/your-username" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <a href="https://www.behance.net/your-username" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </a>
+                <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/your-username" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/your-channel" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-sky-400 transition-transform duration-300 hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-9 h-9 md:w-10 md:h-10">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
+                </a>
+            </div>
         </section>
-    </main>
+</main>
 
-    <!-- Footer -->
     <footer class="border-t border-slate-800">
         <div class="container mx-auto px-6 py-6 text-center text-slate-500">
             <p>&copy; 2025 Kunj Bhatia. Designed & Built with a creative touch.</p>
         </div>
     </footer>
 
-    <!-- Floating CV Download Button -->
     <a href="./Kunj Bhatia Resume.pdf" download="Kunj_Bhatia_Resume.pdf" class="fixed bottom-8 right-8 z-50 bg-sky-500 text-white rounded-full shadow-lg hover:bg-sky-600 transition-all duration-300 ease-in-out flex items-center overflow-hidden group w-14 h-14 hover:w-48">
         <span class="p-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download flex-shrink-0 group-hover:animate-bounce"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -479,7 +490,6 @@
         </span>
     </a>
 
-    <!-- Lightbox Modal -->
     <div id="lightbox" class="hidden fixed inset-0 z-50 items-center justify-center p-4">
         <div class="absolute inset-0 bg-black opacity-90"></div>
         <button id="lightbox-close" class="absolute top-6 right-6 text-white text-4xl">&times;</button>
@@ -488,7 +498,6 @@
         <img id="lightbox-img" src="" alt="Enlarged photo" class="rounded-lg">
     </div>
 
-    <!-- Project Modal -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 items-center justify-center p-4">
         <div id="project-modal-bg" class="absolute inset-0 bg-black opacity-90"></div>
         <div id="project-modal-content" class="relative bg-slate-800 rounded-lg max-w-3xl w-full p-8 m-4 overflow-y-auto max-h-[90vh]">
@@ -496,6 +505,10 @@
             <h3 id="modal-title" class="text-3xl font-bold mb-4 text-white"></h3>
             <div id="modal-body" class="text-slate-300 space-y-4"></div>
         </div>
+    </div>
+    
+    <div id="toast-notification" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-sky-500 text-white py-2 px-5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 z-50">
+        Email copied to clipboard!
     </div>
 
 
@@ -613,12 +626,29 @@
         });
         lazyImages.forEach(img => lazyImageObserver.observe(img));
 
-        // --- Contact Form ---
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message!');
-            contactForm.reset();
+        // --- Contact Button Logic ---
+        const contactBtn = document.getElementById('hero-contact-btn');
+        const toast = document.getElementById('toast-notification');
+        const myEmail = 'kunj.bhatia.dev@email.com'; // Your actual email address
+
+        contactBtn.addEventListener('click', (e) => {
+            // Copy email to clipboard
+            // Using a fallback for broader compatibility
+            const textArea = document.createElement('textarea');
+            textArea.value = myEmail;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                // Show toast notification
+                toast.classList.remove('opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('opacity-0');
+                }, 3000); // Hide after 3 seconds
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+            document.body.removeChild(textArea);
         });
 
         // --- Scroll-based Parallax Effect ---
