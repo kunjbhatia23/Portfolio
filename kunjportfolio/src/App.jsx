@@ -1,9 +1,7 @@
-// src/App.jsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { 
     FaGithub, FaLinkedin, FaEnvelope, FaCode, FaPaintBrush, FaLaptopCode, FaRocket, 
-    FaBriefcase, FaGraduationCap, FaTrophy, FaCertificate, FaExternalLinkAlt 
+    FaBriefcase, FaGraduationCap, FaTrophy, FaCertificate, FaExternalLinkAlt, FaMobileAlt, FaPenNib, FaCameraRetro
 } from 'react-icons/fa';
 
 // --- CUSTOM HOOKS for advanced interactivity ---
@@ -49,16 +47,32 @@ const useIntersectionObserver = (options) => {
 };
 
 
-// --- YOUR RESUME DATA ---
+// --- RESUME DATA ---
 const portfolioData = {
     name: "KUNJ BHATIA",
     headline: "Aspiring Software Developer skilled in MERN Stack, React Native, and UI/UX Design.",
     bio: "MCA student and aspiring software developer with hands-on experience in MERN Stack, React Native, and UI/UX design. Skilled in building responsive web and mobile applications, API integration, and database management. Strong foundation in C++, Python, and MySQL, with a proven ability to deliver user-friendly, functional solutions in team environments.",
-    contact: { email: "kunjbhatia23@gmail.com", phone: "+91-9971074726", socials: { linkedin: "https://linkedin.com/in/yourusername", github: "https://github.com/yourusername" } },
+    contact: { 
+        email: "kunjbhatia23@gmail.com", 
+        phone: "+91-9971074726", 
+        socials: { 
+            linkedin: "https://linkedin.com/in/kunj-bhatia", 
+            github: "https://github.com/kunjbhatia23" 
+        },
+        resumeUrl: "./KunjBhatia_Resume.pdf" // Add the path to your resume PDF here
+    },
     experience: [{ role: "Full Stack & React Native Developer", company: "Aap Ka Bazar, Dwarka", duration: "May 2025", description: ["Developed mobile features for delivery workflow, improving efficiency.", "Integrated APIs for real-time order fetching & optimized image uploads with Multer.", "Enhanced UI across multiple screens for improved UX."] }, { role: "React.js Frontend Intern", company: "Globtier Infotech, Noida", duration: "Jul – Aug 2024", description: ["Developed projects including a Book List app, an API-integrated chatbot, and a To-Do List.", "Collaborated using GitHub workflows, reducing merge conflicts and improving delivery speed."] }],
     education: [{ degree: "Master of Computer Applications (MCA)", institution: "Jagan Institute of Management Studies, New Delhi", duration: "2024–2026", cgpa: "8.36 CGPA" }, { degree: "Bachelor of Computer Applications (BCA)", institution: "Sirifort Institute of Management Studies, New Delhi", duration: "2021–2024", cgpa: "8.88 CGPA" }],
     skills: ["C++", "Python", "React.js", "Next.js", "HTML", "CSS", "Tailwind CSS", "JavaScript", "Figma", "Canva", "SQL", "MongoDB", "Node.js", "Express.js", "RESTful API", "Git/GitHub", "VSCode", "Vercel", "Render"],
-    projects: [{ title: "AI Test Case Generator for GitHub", description: "A web app that connects to public GitHub repos, selects code files, and uses the Gemini API to automatically generate test case summaries and full test code.", tags: ["React", "Gemini API", "Jest", "RTL", "Tailwind CSS"], liveUrl: "#", codeUrl: "#" }, { title: "Budget Guru – Personal Finance Dashboard", description: "Multi-profile budgeting, expense splitting, and asset tracking with interactive charts.", tags: ["Next.js", "TypeScript", "MongoDB", "Tailwind"], liveUrl: "#", codeUrl: "#" }, { title: "Alumnify – Student-Alumni Portal", description: "Features a matching algorithm, mentor chats, forums, and alumni engagement tools.", tags: ["React.js", "Python", "MongoDB"], liveUrl: "#", codeUrl: "#" }, { title: "GameTalk – Gaming Community Platform", description: "AI chatbot, real-time news, esports tracking, and an integrated merchandise store.", tags: ["React.js", "Node.js", "OpenAI API"], liveUrl: "#", codeUrl: "#" }, { title: "Invoicely – Invoicing Tool", description: "Generates GST-compliant invoices with transaction filtering and advanced search.", tags: ["MERN Stack"], liveUrl: "#", codeUrl: "#" }, { title: "Ride-O-Holic – Motorcycle Reservation", description: "A bike reservation platform with model selection, dealer connections, and recommendations.", tags: ["HTML", "CSS", "JavaScript"], liveUrl: "#", codeUrl: "#" }],
+    services: [
+        { icon: <FaCode />, title: "Frontend Development", description: "Building responsive and interactive user interfaces with React.js, Next.js, and modern CSS frameworks." },
+        { icon: <FaLaptopCode />, title: "Full-Stack Development", description: "Creating complete web applications using the MERN stack (MongoDB, Express.js, React, Node.js)." },
+        { icon: <FaMobileAlt />, title: "Mobile App Development", description: "Developing cross-platform mobile applications with React Native for both iOS and Android." },
+        { icon: <FaPaintBrush />, title: "UI/UX Design", description: "Designing user-friendly and visually appealing interfaces with Figma and Adobe XD." },
+        { icon: <FaPenNib />, title: "Graphic Design", description: "Creating logos, icons, and other graphic elements for your brand." },
+        { icon: <FaCameraRetro />, title: "Photo/Video Editing", description: "Editing and enhancing photos and videos for a professional look and feel." }
+    ],
+    projects: [{ title: "AI Test Case Generator for GitHub", description: "A web app that connects to public GitHub repos, selects code files, and uses the Gemini API to automatically generate test case summaries and full test code.", tags: ["React", "Gemini API", "Jest", "RTL", "Tailwind CSS"], liveUrl: "#", codeUrl: "#" }, { title: "Budget Guru – Personal Finance Dashboard", description: "Multi-profile budgeting, expense splitting, and asset tracking with interactive charts.", tags: ["Next.js", "TypeScript", "MongoDB", "Tailwind"], liveUrl: "#", codeUrl: "#" }, { title: "Alumnify – Student-Alumni Portal", description: "Features a matching algorithm, mentor chats, forums, and alumni engagement tools.", tags: ["React.js", "Python", "MongoDB"], liveUrl: "#", codeUrl: "#" }, { title: "GameTalk – Gaming Community Platform", description: "AI chatbot, real-time news, esports tracking, and an integrated merchandise store.", tags: ["React.js", "Node.js", "OpenAI API"], liveUrl: "#", codeUrl: "#" }, { title: "Invoicely – Invoicing Tool", description: "Generates GST-compliant invoices with transaction filtering and advanced search.", tags: ["MERN Stack"], liveUrl: "#", codeUrl: "#" }, { title: "Ride-O-Holic – Motorcycle Reservation System", description: "A bike reservation platform with model selection, dealer connections, and recommendations.", tags: ["HTML", "CSS", "JavaScript"], liveUrl: "#", codeUrl: "#" }],
     achievements: ["First Place in Generative AI Panel Discussion", "Second Runner-Up – Code Blitz Hackathon (25+ teams)", "Top 12 – Hack Vortex Hackathon (110+ teams)", "Hosted multiple tech events"],
     certifications: ["Full Web Development Bootcamp", "Adobe XD UI/UX Design", "Adobe Premiere Pro Masterclass"]
 };
@@ -88,6 +102,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Services />
         <Experience />
         <Projects />
         <Education />
@@ -101,7 +116,7 @@ export default function App() {
 
 
 // --- Section Components ---
-const Header=()=>(<header className="header"><div className="container"><a href="#top" className="logo">{portfolioData.name.split(' ')[0]}</a><nav><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a></nav></div></header>);
+const Header=()=>(<header className="header"><div className="container"><a href="#top" className="logo">{portfolioData.name.split(' ')[0]}</a><nav><a href="#about">About</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a></nav></div></header>);
 
 const Hero = () => {
   const typedHeadline = useTypewriter(portfolioData.headline, 60);
@@ -120,7 +135,21 @@ const Hero = () => {
   );
 };
 
-const About=()=>(<section id="about" className="about container"><h2 className="section-title"><FaCode className="section-icon"/> About Me</h2><div className="about-content"><p>{portfolioData.bio}</p><div className="skills"><h3>My Toolkit:</h3><div className="skill-tags">{portfolioData.skills.map((skill,index)=>(<span key={index} className="skill-tag" style={{animationDelay:`${index*0.05}s`}}>{skill}</span>))}</div></div></div></section>);
+const About=()=>(
+    <section id="about" className="about container">
+        <h2 className="section-title"><FaCode className="section-icon"/> About Me</h2>
+        <div className="about-content">
+            <p>{portfolioData.bio}</p>
+            <a href={portfolioData.contact.resumeUrl} target="_blank" rel="noopener noreferrer" className="cta-button resume-button">
+                Download Resume <FaExternalLinkAlt className="icon-after" />
+            </a>
+            <div className="skills">
+                <h3>My Toolkit:</h3>
+                <div className="skill-tags">{portfolioData.skills.map((skill,index)=>(<span key={index} className="skill-tag" style={{animationDelay:`${index*0.05}s`}}>{skill}</span>))}</div>
+            </div>
+        </div>
+    </section>
+);
 
 const TimelineItem = ({ job }) => {
     const [ref, entry] = useIntersectionObserver({ threshold: 0.5, triggerOnce: true });
@@ -148,6 +177,21 @@ const Experience = () => (
     </section>
 );
 
+const Services = () => (
+    <section id="services" className="services container">
+        <h2 className="section-title"><FaBriefcase className="section-icon" /> Services I Offer</h2>
+        <div className="services-grid">
+            {portfolioData.services.map((service, index) => (
+                <div key={index} className="service-card">
+                    <div className="service-icon">{service.icon}</div>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+);
+
 const Projects=()=>(<section id="projects" className="projects container"><h2 className="section-title"><FaLaptopCode className="section-icon"/> My Projects</h2><div className="project-grid">{portfolioData.projects.map((project,index)=><ProjectCard key={index} project={project}/>)}</div></section>);
 const ProjectCard=({project})=>(<div className="project-card"><div className="project-card-content"><h3>{project.title}</h3><p>{project.description}</p><div className="project-tags">{project.tags.map(tag=><span key={tag} className="tag">{tag}</span>)}</div></div><div className="project-links"><a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo <FaExternalLinkAlt className="link-icon"/></a><a href={project.codeUrl} target="_blank" rel="noopener noreferrer">View Code <FaGithub className="link-icon"/></a></div></div>);
 const Education=()=>(<section id="education" className="education container"><h2 className="section-title"><FaGraduationCap className="section-icon"/> Education</h2><div className="education-grid">{portfolioData.education.map((edu,index)=>(<div key={index} className="education-card"><h3>{edu.degree}</h3><p className="institution">{edu.institution}</p><p className="duration">{edu.duration} | {edu.cgpa}</p></div>))}</div></section>);
@@ -168,8 +212,8 @@ const Contact = () => (
           <p className="output">You can reach me via the following channels:</p>
           <div className="output">
             <p>- <FaEnvelope className="output-icon"/> Email: <a href={`mailto:${portfolioData.contact.email}`}>{portfolioData.contact.email}</a></p>
-            <p>- <FaLinkedin className="output-icon"/> LinkedIn: <a href={portfolioData.contact.socials.linkedin} target="_blank" rel="noopener noreferrer">/in/yourusername</a></p>
-            <p>- <FaGithub className="output-icon"/> GitHub: <a href={portfolioData.contact.socials.github} target="_blank" rel="noopener noreferrer">/yourusername</a></p>
+            <p>- <FaLinkedin className="output-icon"/> LinkedIn: <a href={portfolioData.contact.socials.linkedin} target="_blank" rel="noopener noreferrer">/in/kunj-bhatia</a></p>
+            <p>- <FaGithub className="output-icon"/> GitHub: <a href={portfolioData.contact.socials.github} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a></p>
           </div>
           <p><span className="prompt">kunj@portfolio:~$</span><span className="cursor"></span></p>
         </div>
@@ -177,7 +221,7 @@ const Contact = () => (
     </section>
 );
 
-const Footer=()=>(<footer className="footer"><p>&copy; {new Date().getFullYear()} {portfolioData.name}. Crafted with <span role="img" aria-label="love">💜</span> and code.</p></footer>);
+const Footer=()=>(<footer className="footer"><p>&copy; {new Date().getFullYear()} {portfolioData.name}. Crafted with <span role="img" aria-label="love">💜</span></p></footer>);
 
 // --- STYLING ---
 const StyleTag = () => (
@@ -227,8 +271,9 @@ const StyleTag = () => (
     .cta-button { display: inline-flex; align-items: center; gap: 10px; padding: 1.2rem 2.5rem; background: linear-gradient(45deg, var(--primary-color), #da6ee0); color: #fff; border-radius: 8px; font-weight: 700; font-family: var(--font-heading); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; border: none; box-shadow: 0 5px 15px rgba(147, 51, 234, 0.4); }
     .cta-button:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(147, 51, 234, 0.5); }
     .cta-button .icon-after { font-size: 1.2rem; }
+    .resume-button { margin: 2rem 0; }
     
-    .about-content { max-width: 900px; margin: 0 auto; text-align: center; } .skills h3 { margin-bottom: 1.5rem; color: var(--primary-color); font-size: 1.6rem; }
+    .about-content { max-width: 900px; margin: 0 auto; text-align: center; } .skills h3 { margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary-color); font-size: 1.6rem; }
     .skill-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .skill-tag { background-color: rgba(42, 42, 42, 0.7); padding: 10px 20px; border: 1px solid var(--primary-color); border-radius: 25px; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; opacity: 0; animation: fadeInUp 0.5s ease forwards; }
     .skill-tag:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-3px) scale(1.05); }
@@ -239,10 +284,17 @@ const StyleTag = () => (
     .timeline-item.is-visible { opacity: 1; transform: translateX(0); }
     .timeline-item::before { content: ''; position: absolute; left: 8px; top: 5px; width: 25px; height: 25px; background-color: var(--primary-color); border-radius: 50%; border: 4px solid var(--bg-color); }
     .timeline-content h3 { color: #fff; } .timeline-content .company { color: var(--primary-color); font-weight: 500; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+    .service-card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); backdrop-filter: blur(10px); border-radius: 12px; padding: 2.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); border-color: var(--primary-color); }
+    .service-icon { font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+    .service-card h3 { margin-bottom: 1rem; color: #fff; }
     
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
     .project-card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); backdrop-filter: blur(10px); border-radius: 12px; padding: 2.5rem; display: flex; flex-direction: column; transition: transform 0.4s ease, box-shadow 0.4s ease; transform-style: preserve-3d; }
     .project-card:hover { transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--primary-color); }
+    .project-card-content { display: flex; flex-direction: column; flex-grow: 1; }
     .project-card h3 { color: var(--primary-color); }
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1); }
     .project-tags .tag { background-color: rgba(147, 51, 234, 0.2); color: var(--primary-color); font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; }
