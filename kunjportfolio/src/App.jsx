@@ -8,7 +8,7 @@ import {
 // --- CUSTOM HOOKS for advanced interactivity ---
 
 /**
- * Hook for the typewriter effect.
+ * Hook for the typewriter effect. (Corrected Version)
  * @param {string} text - The text to be typed out.
  * @param {number} speed - The typing speed in milliseconds.
  * @returns {string} - The text that has been typed so far.
@@ -20,15 +20,19 @@ const useTypewriter = (text, speed = 50) => {
         let i = 0;
         const typingInterval = setInterval(() => {
             if (i < text.length) {
-                setDisplayText(prevText => prevText + text.charAt(i));
+                // This is the key change.
+                // Instead of appending to previous state (which can be stale),
+                // we calculate the new state directly from the source `text`.
+                setDisplayText(text.substring(0, i + 1));
                 i++;
             } else {
                 clearInterval(typingInterval);
             }
         }, speed);
 
+        // This cleanup function is crucial and correct.
         return () => clearInterval(typingInterval);
-    }, [text, speed]);
+    }, [text, speed]); // Re-runs effect when `text` changes.
 
     return displayText;
 };
@@ -78,7 +82,7 @@ const portfolioData = {
         {
             role: "Full Stack & React Native Developer",
             company: "Aap Ka Bazar, Dwarka",
-            duration: "May 2025",
+            duration: "May 2024 - Present",
             description: [
                 "Developed mobile features for delivery workflow, improving efficiency.",
                 "Integrated APIs for real-time order fetching & optimized image uploads with Multer.",
@@ -88,7 +92,7 @@ const portfolioData = {
         {
             role: "React.js Frontend Intern",
             company: "Globtier Infotech, Noida",
-            duration: "Jul – Aug 2024",
+            duration: "Jul – Aug 2023",
             description: [
                 "Developed projects including a Book List app, an API-integrated chatbot, and a To-Do List.",
                 "Collaborated using GitHub workflows, reducing merge conflicts and improving delivery speed."
@@ -499,11 +503,11 @@ const Footer = () => {
 
 const StyleTag = () => (
     <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap');
         
         /* --- THEME AND GLOBAL STYLES --- */
         :root {
-            --font-heading: 'Space Mono', monospace;
+            --font-heading: 'Roboto Mono', monospace;
             --font-body: 'Inter', sans-serif;
             --container-width: 1200px;
             --transition-speed: 0.3s;
@@ -611,7 +615,11 @@ const StyleTag = () => (
             padding: 6rem 0; position: relative; z-index: 2;
         }
 
-        h1, h2, h3 { font-family: var(--font-heading); color: var(--heading-color); font-weight: 700; letter-spacing: -0.05em; }
+        h1, h2, h3 { 
+            font-family: var(--font-heading); 
+            color: var(--heading-color); 
+            font-weight: 700; 
+        }
         h1 { font-size: 4.5rem; }
         h2 { font-size: 3rem; }
         h3 { font-size: 1.8rem; }
