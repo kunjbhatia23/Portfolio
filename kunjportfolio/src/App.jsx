@@ -20,9 +20,6 @@ const useTypewriter = (text, speed = 50) => {
         let i = 0;
         const typingInterval = setInterval(() => {
             if (i < text.length) {
-                // This is the key change.
-                // Instead of appending to previous state (which can be stale),
-                // we calculate the new state directly from the source `text`.
                 setDisplayText(text.substring(0, i + 1));
                 i++;
             } else {
@@ -30,9 +27,8 @@ const useTypewriter = (text, speed = 50) => {
             }
         }, speed);
 
-        // This cleanup function is crucial and correct.
         return () => clearInterval(typingInterval);
-    }, [text, speed]); // Re-runs effect when `text` changes.
+    }, [text, speed]);
 
     return displayText;
 };
@@ -217,6 +213,19 @@ export default function App() {
 
 const Header = ({ currentTheme, toggleTheme }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // This effect locks the body's scroll when the mobile menu is open.
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.classList.add('body-no-scroll');
+        } else {
+            document.body.classList.remove('body-no-scroll');
+        }
+        // Cleanup function to ensure the class is removed if the component unmounts
+        return () => {
+            document.body.classList.remove('body-no-scroll');
+        };
+    }, [isMenuOpen]); // This hook runs whenever isMenuOpen changes.
 
     const closeMenu = () => setIsMenuOpen(false);
 
@@ -558,6 +567,10 @@ const StyleTag = () => (
             line-height: 1.7;
             overflow-x: hidden;
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+
+        .body-no-scroll {
+            overflow: hidden;
         }
 
         .spotlight {
