@@ -686,25 +686,22 @@ const StyleTag = () => (
             .container { padding: 4rem 0; }
 
             .header nav {
+                /* Hide the navigation menu by default on mobile */
+                display: none;
+            }
+            .header nav.nav-open {
+                /* When the menu is open, show it as a full-screen overlay */
+                display: flex;
                 position: fixed;
                 top: 0;
                 right: 0;
                 width: 100%;
                 height: 100vh;
                 z-index: 1000;
-                display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 background-color: var(--bg-color);
-                /* Use transform to move the menu off-screen */
-                transform: translateX(100%);
-                /* Transition the transform property */
-                transition: transform 0.35s ease-in-out;
-            }
-            .header nav.nav-open {
-                /* Bring the menu back on-screen */
-                transform: translateX(0);
             }
             .header nav a {
                 font-size: 2rem;
