@@ -688,7 +688,7 @@ const StyleTag = () => (
             .header nav {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: 0;
                 width: 100%;
                 height: 100vh;
                 z-index: 1000;
@@ -697,10 +697,14 @@ const StyleTag = () => (
                 justify-content: center;
                 align-items: center;
                 background-color: var(--bg-color);
-                transition: right 0.35s ease-in-out;
+                /* Use transform to move the menu off-screen */
+                transform: translateX(100%);
+                /* Transition the transform property */
+                transition: transform 0.35s ease-in-out;
             }
             .header nav.nav-open {
-                right: 0;
+                /* Bring the menu back on-screen */
+                transform: translateX(0);
             }
             .header nav a {
                 font-size: 2rem;
