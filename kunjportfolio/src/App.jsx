@@ -213,19 +213,36 @@ export default function App() {
 
 const Header = ({ currentTheme, toggleTheme }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    // Use a ref to store the scroll position
+    const scrollPosition = useRef(0);
 
-    // This effect locks the body's scroll when the mobile menu is open.
     useEffect(() => {
         if (isMenuOpen) {
+            // 1. Save the current scroll position
+            scrollPosition.current = window.scrollY;
+            
+            // 2. Add the lock class to the body
             document.body.classList.add('body-no-scroll');
+            
+            // 3. Apply the negative top style to keep the view in place
+            document.body.style.top = `-${scrollPosition.current}px`;
         } else {
+            // 1. Remove the lock class
             document.body.classList.remove('body-no-scroll');
+            
+            // 2. Remove the inline style
+            document.body.style.top = '';
+            
+            // 3. Restore the scroll position
+            window.scrollTo(0, scrollPosition.current);
         }
-        // Cleanup function to ensure the class is removed if the component unmounts
+
+        // Cleanup function
         return () => {
             document.body.classList.remove('body-no-scroll');
+            document.body.style.top = '';
         };
-    }, [isMenuOpen]); // This hook runs whenever isMenuOpen changes.
+    }, [isMenuOpen]);
 
     const closeMenu = () => setIsMenuOpen(false);
 
@@ -570,7 +587,10 @@ const StyleTag = () => (
         }
 
         .body-no-scroll {
-            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            /* overflow-y: scroll is a trick to prevent content from shifting when the scrollbar disappears */
+            overflow-y: scroll; 
         }
 
         .spotlight {
