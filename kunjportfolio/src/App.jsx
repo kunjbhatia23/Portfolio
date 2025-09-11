@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
     FaGithub, FaLinkedin, FaEnvelope, FaCode, FaPaintBrush, FaLaptopCode, FaRocket,
     FaBriefcase, FaGraduationCap, FaTrophy, FaCertificate, FaExternalLinkAlt, FaMobileAlt,
-    FaPenNib, FaCameraRetro, FaDownload, FaSun, FaMoon, FaBars, FaTimes, FaBehance
+    FaPenNib, FaCameraRetro, FaDownload, FaSun, FaMoon, FaBars, FaTimes, FaBehance, FaInstagram
 } from 'react-icons/fa';
 
-// --- CUSTOM HOOKS (No Changes Here) ---
+// --- CUSTOM HOOKS ---
 
 const useTypewriter = (text, speed = 50) => {
     const [displayText, setDisplayText] = useState('');
@@ -39,7 +39,7 @@ const useIntersectionObserver = (options) => {
     return [setNode, entry];
 };
 
-// --- RESUME DATA (No Changes Here) ---
+// --- RESUME DATA ---
 
 const portfolioData = {
     name: "KUNJ BHATIA",
@@ -51,7 +51,8 @@ const portfolioData = {
         socials: {
             linkedin: "https://linkedin.com/in/kunj-bhatia",
             github: "https://github.com/kunjbhatia23",
-            behance: "https://www.behance.net/kunjbhatia23"
+            behance: "https://www.behance.net/kunjbhatia23",
+            instagram: "https://instagram.com/kunjbhatia23"
         },
         resumeUrl: "https://drive.google.com/file/d/1g0iZ9gVS0D18gKqQd1IaX-5z0mnCAFRN/"
     },
@@ -124,7 +125,7 @@ const portfolioData = {
     ]
 };
 
-// --- Main App Component (No Changes Here) ---
+// --- Main App Component ---
 
 export default function App() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -182,27 +183,18 @@ export default function App() {
 
 // --- Section Components ---
 
-// ====================================================================
-// CRITICAL CHANGE #1: UPDATED HEADER COMPONENT WITH SCROLL LOCK LOGIC
-// ====================================================================
 const Header = ({ currentTheme, toggleTheme }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const scrollPosition = useRef(0);
 
     useEffect(() => {
         if (isMenuOpen) {
-            // Save the current scroll position
             scrollPosition.current = window.scrollY;
-            // Add the lock class to the body
             document.body.classList.add('body-no-scroll');
-            // Apply a negative top margin to keep the view in place
             document.body.style.top = `-${scrollPosition.current}px`;
         } else {
-            // Remove the lock class
             document.body.classList.remove('body-no-scroll');
-            // Remove the inline style
             document.body.style.top = '';
-            // Restore the scroll position
             window.scrollTo(0, scrollPosition.current);
         }
         return () => {
@@ -239,9 +231,7 @@ const Header = ({ currentTheme, toggleTheme }) => {
     );
 };
 
-// --- Other Components (No Changes Here) ---
-
-const Hero = () => { /* ... same as before ... */ 
+const Hero = () => {
     const typedHeadline = useTypewriter(portfolioData.headline, 60);
     return (
         <section className="hero container">
@@ -264,7 +254,7 @@ const Hero = () => { /* ... same as before ... */
         </section>
     );
 };
-const About = () => { /* ... same as before ... */ 
+const About = () => {
     return (
         <section id="about" className="about container">
             <h2 className="section-title">
@@ -298,7 +288,7 @@ const About = () => { /* ... same as before ... */
         </section>
     );
 };
-const TimelineItem = ({ job }) => { /* ... same as before ... */ 
+const TimelineItem = ({ job }) => {
     const [ref, entry] = useIntersectionObserver({ threshold: 0.5, triggerOnce: true });
     const isVisible = entry && entry.isIntersecting;
     return (
@@ -317,7 +307,7 @@ const TimelineItem = ({ job }) => { /* ... same as before ... */
         </div>
     );
 };
-const Experience = () => { /* ... same as before ... */ 
+const Experience = () => {
     return (
         <section id="experience" className="experience container">
             <h2 className="section-title">
@@ -331,7 +321,7 @@ const Experience = () => { /* ... same as before ... */
         </section>
     );
 };
-const Services = () => { /* ... same as before ... */ 
+const Services = () => {
     return (
         <section id="services" className="services container">
             <h2 className="section-title">
@@ -349,7 +339,7 @@ const Services = () => { /* ... same as before ... */
         </section>
     );
 };
-const ProjectCard = ({ project }) => { /* ... same as before ... */ 
+const ProjectCard = ({ project }) => {
     return (
         <div className="project-card">
             <div className="project-card-content">
@@ -372,7 +362,7 @@ const ProjectCard = ({ project }) => { /* ... same as before ... */
         </div>
     );
 };
-const Projects = () => { /* ... same as before ... */ 
+const Projects = () => {
     return (
         <section id="projects" className="projects container">
             <h2 className="section-title">
@@ -386,7 +376,7 @@ const Projects = () => { /* ... same as before ... */
         </section>
     );
 };
-const Education = () => { /* ... same as before ... */ 
+const Education = () => {
     return (
         <section id="education" className="education container">
             <h2 className="section-title">
@@ -404,7 +394,7 @@ const Education = () => { /* ... same as before ... */
         </section>
     );
 };
-const Achievements = () => { /* ... same as before ... */ 
+const Achievements = () => {
     return (
         <section id="achievements" className="achievements container">
             <h2 className="section-title">
@@ -431,7 +421,7 @@ const Achievements = () => { /* ... same as before ... */
         </section>
     );
 };
-const Contact = () => { /* ... same as before ... */ 
+const Contact = () => {
     return (
         <section id="contact" className="contact container">
             <h2 className="section-title">
@@ -460,9 +450,15 @@ const Contact = () => { /* ... same as before ... */
                         <p>
                             - <FaGithub className="output-icon" /> GitHub: <a href={portfolioData.contact.socials.github} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
                         </p>
+						<p>
+                            - <FaInstagram className="output-icon" /> Instagram: <a href={portfolioData.contact.socials.instagram} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
+                        </p>
                         <p>
                            - <FaBehance className="output-icon"/> Behance: <a href={portfolioData.contact.socials.behance} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
                         </p>
+                        
+                        <br></br>
+                        <p className="output">You can downlad my resume here:</p>
                         <p>
                            - <FaDownload className="output-icon"/> Resume: <a href={portfolioData.contact.resumeUrl} target="_blank" rel="noopener noreferrer">Download Resume</a>
                         </p>
@@ -476,7 +472,7 @@ const Contact = () => { /* ... same as before ... */
         </section>
     );
 };
-const Footer = () => { /* ... same as before ... */ 
+const Footer = () => {
     return (
         <footer className="footer">
             <p>&copy; {new Date().getFullYear()} {portfolioData.name}. Crafted with <span role="img" aria-label="love">💜</span></p>
@@ -485,15 +481,12 @@ const Footer = () => { /* ... same as before ... */
 };
 
 
-// ===============================================
-// CRITICAL CHANGE #2: UPDATED STYLES
-// ===============================================
+// --- STYLING ---
 
 const StyleTag = () => (
     <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap');
         
-        /* --- THEME AND GLOBAL STYLES --- */
         :root {
             --font-heading: 'Roboto Mono', monospace;
             --font-body: 'Inter', sans-serif;
@@ -541,14 +534,12 @@ const StyleTag = () => (
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        /* NEW, ROBUST SCROLL LOCK STYLE */
         .body-no-scroll {
             position: fixed;
             width: 100%;
-            overflow-y: scroll; /* Prevents content shift from scrollbar disappearing */
+            overflow-y: scroll;
         }
 
-        /* --- BACKGROUND EFFECTS (No Change) --- */
         .spotlight {
             position: fixed; width: 400px; height: 400px; border-radius: 50%;
             background: radial-gradient(circle, var(--spotlight-color) 0%, rgba(147, 51, 234, 0) 70%);
@@ -569,7 +560,6 @@ const StyleTag = () => (
         @keyframes moveAurora2 { from { transform: translate(0, 0) rotate(0deg); } to { transform: translate(-300px, -200px) rotate(270deg); } }
         @keyframes moveAurora3 { from { transform: translate(0, 0) rotate(0deg); } to { transform: translate(100px, -200px) rotate(90deg); } }
 
-        /* --- GENERAL STYLING (No Change) --- */
         .portfolio-wrapper { position: relative; z-index: 1; }
         .container { width: 90%; max-width: var(--container-width); margin: 0 auto; padding: 6rem 0; position: relative; z-index: 2; }
         h1, h2, h3 { font-family: var(--font-heading); color: var(--heading-color); font-weight: 700; }
@@ -580,7 +570,6 @@ const StyleTag = () => (
         a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease, transform 0.2s ease; }
         a:hover { color: var(--heading-color); transform: translateY(-2px); }
 
-        /* --- HEADER (No Change to Desktop) --- */
         .header { position: sticky; top: 0; width: 100%; background-color: var(--header-bg); backdrop-filter: blur(16px); z-index: 10; padding: 1.2rem 0; border-bottom: 1px solid var(--border-color); }
         .header .container { display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; width: 100%; max-width: var(--container-width); margin: 0 auto; }
         a.logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-shadow: 0 0 5px rgba(147, 51, 234, 0.5); }
@@ -594,7 +583,6 @@ const StyleTag = () => (
         .theme-toggle:hover, .menu-toggle:hover { color: var(--primary-color); transform: scale(1.1); }
         .menu-toggle { display: none; z-index: 1001; }
         
-        /* --- ALL OTHER STYLES (No Change) --- */
         .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; text-align: center; }
         .hero-text { max-width: 900px; margin: 0 auto; }
         .hero p { font-size: 1.7rem; max-width: 700px; margin: 1.5rem auto 3rem auto; font-weight: 300; color: var(--text-color); }
@@ -678,27 +666,26 @@ const StyleTag = () => (
 
             /* THIS IS THE CRITICAL FIX FOR THE MENU LAYOUT */
             .header nav {
-                /* Make it a full-screen fixed overlay */
                 position: fixed;
                 top: 0;
-                left: 0;
+                /* CHANGE: Start fully off-screen to the right */
+                right: -100%;
                 width: 100%;
                 height: 100vh;
-                z-index: 1000; /* Ensure it's on top of other content */
+                z-index: 1000;
                 
-                /* Layout for menu items */
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 
-                /* Appearance and Animation */
                 background-color: var(--bg-color);
-                transform: translateX(100%);
-                transition: transform 0.3s ease-in-out;
+                /* CHANGE: Animate the 'right' property instead of transform */
+                transition: right 0.35s ease-in-out;
             }
             .header nav.nav-open {
-                transform: translateX(0);
+                /* CHANGE: Bring the menu fully into view */
+                right: 0;
             }
             .header nav a {
                 font-size: 2rem;
