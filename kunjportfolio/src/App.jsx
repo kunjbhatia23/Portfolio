@@ -185,21 +185,20 @@ export default function App() {
 
 const Header = ({ currentTheme, toggleTheme }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const scrollPosition = useRef(0);
-
+    
+    // *** FIX: Simplified useEffect for scroll locking ***
+    // This now only toggles a class on the body. 
+    // The CSS (`body.body-no-scroll`) handles the `overflow: hidden` rule.
     useEffect(() => {
         if (isMenuOpen) {
-            scrollPosition.current = window.scrollY;
             document.body.classList.add('body-no-scroll');
-            document.body.style.top = `-${scrollPosition.current}px`;
         } else {
             document.body.classList.remove('body-no-scroll');
-            document.body.style.top = '';
-            window.scrollTo(0, scrollPosition.current);
         }
+
+        // Cleanup function to remove class if component unmounts
         return () => {
             document.body.classList.remove('body-no-scroll');
-            document.body.style.top = '';
         };
     }, [isMenuOpen]);
 
@@ -450,7 +449,7 @@ const Contact = () => {
                         <p>
                             - <FaGithub className="output-icon" /> GitHub: <a href={portfolioData.contact.socials.github} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
                         </p>
-						<p>
+                        <p>
                             - <FaInstagram className="output-icon" /> Instagram: <a href={portfolioData.contact.socials.instagram} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
                         </p>
                         <p>
@@ -534,10 +533,10 @@ const StyleTag = () => (
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        .body-no-scroll {
-            position: fixed;
-            width: 100%;
-            overflow-y: scroll;
+        /* *** FIX: Corrected body scroll lock *** */
+        /* This is a more robust way to prevent scrolling without causing layout shifts. */
+        body.body-no-scroll {
+            overflow: hidden;
         }
 
         .spotlight {
@@ -656,7 +655,6 @@ const StyleTag = () => (
             .hero p { font-size: 1.5rem; }
         }
 
-        /* MOBILE DEVICES - THIS SECTION CONTAINS THE KEY FIX */
         @media (max-width: 768px) {
             .spotlight { display: none; }
             h1 { font-size: 2.5rem; }
@@ -664,27 +662,21 @@ const StyleTag = () => (
             .hero p { font-size: 1.2rem; }
             .container { padding: 4rem 0; }
 
-            /* THIS IS THE CRITICAL FIX FOR THE MENU LAYOUT */
             .header nav {
                 position: fixed;
                 top: 0;
-                /* CHANGE: Start fully off-screen to the right */
                 right: -100%;
                 width: 100%;
                 height: 100vh;
                 z-index: 1000;
-                
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                
                 background-color: var(--bg-color);
-                /* CHANGE: Animate the 'right' property instead of transform */
                 transition: right 0.35s ease-in-out;
             }
             .header nav.nav-open {
-                /* CHANGE: Bring the menu fully into view */
                 right: 0;
             }
             .header nav a {
@@ -693,7 +685,7 @@ const StyleTag = () => (
             }
             .menu-toggle {
                 display: block;
-                z-index: 1001; /* Ensure it's above the nav overlay */
+                z-index: 1001;
             }
 
             .timeline::before { left: 10px; }
