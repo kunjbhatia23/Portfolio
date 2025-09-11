@@ -8,8 +8,8 @@ import {
 // --- CUSTOM HOOKS ---
 
 const useTypewriter = (text, speed = 50) => {
-    const [displayText, setDisplayText] = useState('');
-    useEffect(() => {
+    const [displayText, setDisplayText] = React.useState('');
+    React.useEffect(() => {
         let i = 0;
         const typingInterval = setInterval(() => {
             if (i < text.length) {
@@ -25,10 +25,10 @@ const useTypewriter = (text, speed = 50) => {
 };
 
 const useIntersectionObserver = (options) => {
-    const [entry, setEntry] = useState(null);
-    const [node, setNode] = useState(null);
-    const observer = useRef(new IntersectionObserver(([entry]) => setEntry(entry), options));
-    useEffect(() => {
+    const [entry, setEntry] = React.useState(null);
+    const [node, setNode] = React.useState(null);
+    const observer = React.useRef(new IntersectionObserver(([entry]) => setEntry(entry), options));
+    React.useEffect(() => {
         const { current: currentObserver } = observer;
         currentObserver.disconnect();
         if (node) {
@@ -128,12 +128,12 @@ const portfolioData = {
 // --- Main App Component ---
 
 export default function App() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [theme, setTheme] = useState(() => {
+    const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+    const [theme, setTheme] = React.useState(() => {
         const savedTheme = localStorage.getItem('theme');
         return savedTheme ? savedTheme : 'dark';
     });
-    useEffect(() => {
+    React.useEffect(() => {
         const handleMouseMove = (event) => {
             setMousePosition({ x: event.clientX, y: event.clientY });
         };
@@ -142,13 +142,17 @@ export default function App() {
             window.removeEventListener('mousemove', handleMouseMove);
         };
     }, []);
-    useEffect(() => {
+    React.useEffect(() => {
         localStorage.setItem('theme', theme);
-        document.body.className = `${theme}-theme`;
+        // Clear all classes and add only the current theme class
+        document.body.className = '';
+        document.body.classList.add(`${theme}-theme`);
     }, [theme]);
+
     const toggleTheme = () => {
         setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
     };
+
     return (
         <div id="top" className="portfolio-wrapper">
             <StyleTag />
@@ -180,27 +184,32 @@ export default function App() {
     );
 }
 
-
 // --- Section Components ---
 
 const Header = ({ currentTheme, toggleTheme }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
-    // *** FIX: Simplified useEffect for scroll locking ***
-    // This now only toggles a class on the body. 
-    // The CSS (`body.body-no-scroll`) handles the `overflow: hidden` rule.
-    useEffect(() => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+    // *** FIX #1: MORE ROBUST JAVASCRIPT ***
+    // This now targets both the <html> and <body> tags to ensure
+    // the scrolling is locked in all browsers.
+    React.useEffect(() => {
+        const htmlElement = document.documentElement;
+        const bodyElement = document.body;
+
         if (isMenuOpen) {
-            document.body.classList.add('body-no-scroll');
+            htmlElement.classList.add('body-no-scroll');
+            bodyElement.classList.add('body-no-scroll');
         } else {
-            document.body.classList.remove('body-no-scroll');
+            htmlElement.classList.remove('body-no-scroll');
+            bodyElement.classList.remove('body-no-scroll');
         }
 
-        // Cleanup function to remove class if component unmounts
         return () => {
-            document.body.classList.remove('body-no-scroll');
+            htmlElement.classList.remove('body-no-scroll');
+            bodyElement.classList.remove('body-no-scroll');
         };
     }, [isMenuOpen]);
+
 
     const closeMenu = () => setIsMenuOpen(false);
 
@@ -253,6 +262,7 @@ const Hero = () => {
         </section>
     );
 };
+
 const About = () => {
     return (
         <section id="about" className="about container">
@@ -287,6 +297,7 @@ const About = () => {
         </section>
     );
 };
+
 const TimelineItem = ({ job }) => {
     const [ref, entry] = useIntersectionObserver({ threshold: 0.5, triggerOnce: true });
     const isVisible = entry && entry.isIntersecting;
@@ -306,6 +317,7 @@ const TimelineItem = ({ job }) => {
         </div>
     );
 };
+
 const Experience = () => {
     return (
         <section id="experience" className="experience container">
@@ -320,6 +332,7 @@ const Experience = () => {
         </section>
     );
 };
+
 const Services = () => {
     return (
         <section id="services" className="services container">
@@ -338,6 +351,7 @@ const Services = () => {
         </section>
     );
 };
+
 const ProjectCard = ({ project }) => {
     return (
         <div className="project-card">
@@ -361,6 +375,7 @@ const ProjectCard = ({ project }) => {
         </div>
     );
 };
+
 const Projects = () => {
     return (
         <section id="projects" className="projects container">
@@ -375,6 +390,7 @@ const Projects = () => {
         </section>
     );
 };
+
 const Education = () => {
     return (
         <section id="education" className="education container">
@@ -393,6 +409,7 @@ const Education = () => {
         </section>
     );
 };
+
 const Achievements = () => {
     return (
         <section id="achievements" className="achievements container">
@@ -420,6 +437,7 @@ const Achievements = () => {
         </section>
     );
 };
+
 const Contact = () => {
     return (
         <section id="contact" className="contact container">
@@ -471,6 +489,7 @@ const Contact = () => {
         </section>
     );
 };
+
 const Footer = () => {
     return (
         <footer className="footer">
@@ -522,6 +541,7 @@ const StyleTag = () => (
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         html { scroll-behavior: smooth; }
 
         body {
@@ -533,10 +553,13 @@ const StyleTag = () => (
             transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        /* *** FIX: Corrected body scroll lock *** */
-        /* This is a more robust way to prevent scrolling without causing layout shifts. */
+        /* *** FIX #2: MORE ROBUST CSS *** */
+        /* This rule now targets both html and body to ensure scrolling is
+        /* disabled, and adds position:relative to prevent layout shifts. */
+        html.body-no-scroll,
         body.body-no-scroll {
             overflow: hidden;
+            position: relative;
         }
 
         .spotlight {
