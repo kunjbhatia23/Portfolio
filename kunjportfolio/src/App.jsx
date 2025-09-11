@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
     FaGithub, FaLinkedin, FaEnvelope, FaCode, FaPaintBrush, FaLaptopCode, FaRocket,
     FaBriefcase, FaGraduationCap, FaTrophy, FaCertificate, FaExternalLinkAlt, FaMobileAlt,
-    FaPenNib, FaCameraRetro, FaDownload, FaSun, FaMoon, FaBars, FaTimes
+    FaPenNib, FaCameraRetro, FaDownload, FaSun, FaMoon, FaBars, FaTimes, FaBehance
 } from 'react-icons/fa';
 
 // --- CUSTOM HOOKS (No Changes Here) ---
@@ -50,7 +50,8 @@ const portfolioData = {
         phone: "+91-9971074726",
         socials: {
             linkedin: "https://linkedin.com/in/kunj-bhatia",
-            github: "https://github.com/kunjbhatia23"
+            github: "https://github.com/kunjbhatia23",
+            behance: "https://www.behance.net/kunjbhatia23"
         },
         resumeUrl: "https://drive.google.com/file/d/1g0iZ9gVS0D18gKqQd1IaX-5z0mnCAFRN/"
     },
@@ -458,6 +459,9 @@ const Contact = () => { /* ... same as before ... */
                         </p>
                         <p>
                             - <FaGithub className="output-icon" /> GitHub: <a href={portfolioData.contact.socials.github} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
+                        </p>
+                        <p>
+                           - <FaBehance className="output-icon"/> Behance: <a href={portfolioData.contact.socials.behance} target="_blank" rel="noopener noreferrer">/kunjbhatia23</a>
                         </p>
                         <p>
                            - <FaDownload className="output-icon"/> Resume: <a href={portfolioData.contact.resumeUrl} target="_blank" rel="noopener noreferrer">Download Resume</a>
